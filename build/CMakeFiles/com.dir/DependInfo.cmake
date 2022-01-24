@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions/src/init.c" "CMakeFiles/com.dir/src/init.c.obj" "gcc" "CMakeFiles/com.dir/src/init.c.obj.d"
+  "C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool/src/init.c" "CMakeFiles/com.dir/src/init.c.obj" "gcc" "CMakeFiles/com.dir/src/init.c.obj.d"
   )
 
 # Targets to which this target links.

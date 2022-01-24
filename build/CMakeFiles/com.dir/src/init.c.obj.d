@@ -1,5 +1,5 @@
 CMakeFiles/com.dir/src/init.c.obj: \
- C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\src\init.c \
+ C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\src\init.c \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/sys/time.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/time.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
@@ -15,14 +15,14 @@ CMakeFiles/com.dir/src/init.c.obj: \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/string.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
- C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\src\ansi_colors.h \
+ C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\src\ansi_colors.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/stdio.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
- C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\src\__commence.c \
- C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\src\file_manipulate.c \
+ C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\src\__commence.c \
+ C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\src\file_manipulate.c \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/stdlib.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \
@@ -33,4 +33,4 @@ CMakeFiles/com.dir/src/init.c.obj: \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mm_malloc.h \
  C:/msys64/mingw64/x86_64-w64-mingw32/include/errno.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdbool.h \
- C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\src\memory_calc.h
+ C:\Users\jenowin\My\ Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\src\memory_calc.h

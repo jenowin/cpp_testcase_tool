@@ -53,10 +53,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions"
+CMAKE_SOURCE_DIR = "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\build"
+CMAKE_BINARY_DIR = "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\build"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -80,14 +80,14 @@ clean: CMakeFiles/com.dir/clean
 CMakeFiles/com.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\com.dir\build.make CMakeFiles/com.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\com.dir\build.make CMakeFiles/com.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\build\CMakeFiles" --progress-num=1,2 "Built target com"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\build\CMakeFiles" --progress-num=1,2 "Built target com"
 .PHONY : CMakeFiles/com.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/com.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\build\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\build\CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/com.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\compile_test_solutions\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\jenowin\My Drive\c++_cp\test_Projects\read_write_c\cpp_testcase_tool\build\CMakeFiles" 0
 .PHONY : CMakeFiles/com.dir/rule
 
 # Convenience name for target.

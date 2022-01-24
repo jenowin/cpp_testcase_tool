@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions
+# Install script for directory: C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

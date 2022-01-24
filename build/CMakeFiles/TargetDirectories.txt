@@ -1,3 +1,3 @@
-C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions/build/CMakeFiles/com.dir
-C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions/build/CMakeFiles/edit_cache.dir
-C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/compile_test_solutions/build/CMakeFiles/rebuild_cache.dir
+C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool/build/CMakeFiles/com.dir
+C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool/build/CMakeFiles/edit_cache.dir
+C:/Users/jenowin/My Drive/c++_cp/test_Projects/read_write_c/cpp_testcase_tool/build/CMakeFiles/rebuild_cache.dir
