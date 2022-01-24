@@ -8,4 +8,4 @@ A tool that helps to Compile a program from the shell and tests the resulting ou
    + streamed output: output
 
 * Usage
-   <Executable file> <src file without extension> <testcase(0 - 9)> * <br />
+   <Executable file> <src file without extension> <testcase(0 - 9)> 
