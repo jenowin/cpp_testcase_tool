@@ -1,11 +1,12 @@
-# cpp_testcase_tool
-A tool that helps to Compile a program from the shell and tests the resulting output with the expected one and also uses filtering features to get rid of surplus characters.
+#+TITLE: cpp_testcase_tool
 
-File requirements: <br />
-    &emsp; * Given input: in0, in1.... <br />
-    &emsp; * Expected output: op0, op1... <br />
-    &emsp; * streamed output: output <br /> <br />
+* A tool that helps to Compile a program from the shell and tests the resulting output with the expected one and also uses filtering features to get rid of surplus characters.
 
-# Usage
-   &emsp; <Executable file> <src file without extension> <testcase(0 - 9)> * <br /> 
- 
+#+TITLE: File requirements
+
+** &emsp; * Given input: in0, in1....
+** &emsp; * Expected output: op0, op1...
+** &emsp; * streamed output: output
+
+#+TITLE: Usage
+*** <Executable file> <src file without extension> <testcase(0 - 9)> * <br />
