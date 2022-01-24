@@ -7,5 +7,5 @@ File requirements: <br />
     &emsp; streamed output: output <br /> <br />
 
 # Usage
-  &emsp; <Executable file> <src file without extension> <testcase(0 - 9)> <br />
+  * &emsp; <Executable file> <src file without extension> <testcase(0 - 9)> * <br /> 
  
