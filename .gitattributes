@@ -1,2 +1,3 @@
 *.cpp linguist-detectable=false
 *.ts linguist-detectable=false
+build/* linguist-detectable=false
