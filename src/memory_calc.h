@@ -39,7 +39,10 @@ void DISPLAY_MEM_SRC_EXE(const char* file) {
 
   char file_ch[15];
   strcpy(file_ch, file);
-  strcat_s(file_ch, sizeof file_ch, ".exe");
+
+#ifdef _WIN32
+  strcat(file_ch, ".exe");
+#endif
 
   printf("Memory: ");
   long double file_s = GET_SIZE(file_ch);

@@ -2,45 +2,22 @@
 
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 
-void file_SLIPED(const char* _f) {
-  fprintf(stderr, "Can't open %s\n", _f), exit(EXIT_FAILURE);
-  return;
-}
-
-void HAND_ARG(const int* ARG_cnt, const char* fname, const char* inputfile, const char* tempfile, FILE** const SRC_F, FILE** const TEMP_F) {
-
-  switch(*ARG_cnt) {
-
-    case 1:
-      fprintf(stderr, "No file Arguments! \n"), exit(EXIT_FAILURE);
-      break;
-    case 2 ... 3:
-      fopen_s(&(*SRC_F), inputfile, "r") != 0 ? file_SLIPED(fname): 0;
-      fopen_s(&(*TEMP_F), tempfile, "w") != 0 ? fprintf(stderr, "Can't create tempfile %s\n", tempfile), exit(EXIT_FAILURE): 0;
-      fclose(*SRC_F);
-      fclose(*TEMP_F);
-      break;
-  }
-  return;
-}
-
 void CHECK_POSSIBLITY(long** const LINE_POS, char** const MEM_BUFF) {
   LINE_POS == NULL || MEM_BUFF == NULL ? fprintf(stderr, "Can't allocate memory\n"), exit(EXIT_FAILURE) : 0;
   return;
 }
 
-void __TRIM__(const int* argc, const char* fname, const char* inputfile) {
+void __TRIM__(const char* inputfile) {
 
   char tempfile[15] = "TEMP_FILE.tmp";
 
-  FILE *src_FILE, *temp_FILE;
+  FILE *src_FILE = fopen(inputfile, "r");
+  FILE *temp_FILE = fopen(tempfile, "w");
 
-  HAND_ARG(argc, &fname[0], &inputfile[0], &tempfile[0], &src_FILE, &temp_FILE);
+  !temp_FILE ? fprintf(stderr, "Can't create tempfile %s\n", tempfile), exit(EXIT_FAILURE): 0;
 
-  fopen_s(&src_FILE, inputfile, "r");
-  fopen_s(&temp_FILE, tempfile, "w");
 
-  int CH = 0, TOT_LINES = 0, LEN = 0, MAX_alloc = 0;
+  int CH = 0, TOT_LINES = 0, LEN = 0, LINE_LEN = 0;
   int FIRST_SPACE_HIT_POS = 0, hit_flag = 0;
   char prev_CH; int i = 0;
   while((CH = fgetc(src_FILE)) != EOF) {
@@ -61,7 +38,7 @@ void __TRIM__(const int* argc, const char* fname, const char* inputfile) {
     if(CH == '\n') {
       TOT_LINES++;
       BEGIN_RIGHT_SPACE[i] = FIRST_SPACE_HIT_POS - 1;
-      MAX_alloc = MAX(MAX_alloc, LEN);
+      LINE_LEN = MAX(LINE_LEN, LEN);
       LEN = 0;
       hit_flag = 0;
       i++;
@@ -70,7 +47,7 @@ void __TRIM__(const int* argc, const char* fname, const char* inputfile) {
   }
 
   long *LINE_POS = malloc((TOT_LINES + 1) * sizeof *LINE_POS);
-  char *MEM_BUFF = malloc(MAX_alloc + 1);
+  char *MEM_BUFF = malloc(LINE_LEN + 1);
 
   CHECK_POSSIBLITY(&LINE_POS, &MEM_BUFF);
 
@@ -85,7 +62,7 @@ void __TRIM__(const int* argc, const char* fname, const char* inputfile) {
   for(int i = TOT_LINES - 1; i >= 0; --i) {
 
     fseek(src_FILE, LINE_POS[i], SEEK_SET);
-    fgets(MEM_BUFF, MAX_alloc + 1, src_FILE);
+    fgets(MEM_BUFF, LINE_LEN + 1, src_FILE);
 
     if(!is_EMPTY_LINE(MEM_BUFF)) {
       CHAR_HIT_BOTTOM = i+1;

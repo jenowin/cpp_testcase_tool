@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include <malloc.h>
 
 int BEGIN_RIGHT_SPACE[100]={0};
 
@@ -18,26 +19,35 @@ bool is_EMPTY_LINE(const char *str) {
 void WRITE_FILE(FILE** const SRC_F, FILE** const TEMP_F, const int* CHAR_HIT_BOTTOM, char** const MEM_BUFF) {
   if(*CHAR_HIT_BOTTOM == 0) return;
   int lin = 0;
+
+#ifdef _WIN32
   while(fgets(*MEM_BUFF, _msize(*MEM_BUFF), *SRC_F) != 0) {
     fwrite(*MEM_BUFF, BEGIN_RIGHT_SPACE[lin++], 1, *TEMP_F);
     fputs("\n", *TEMP_F);
 
     if((*CHAR_HIT_BOTTOM) == lin) break;
   }
-  fclose(*SRC_F);
-  fclose(*TEMP_F);
+#elif __linux__
+  while(fgets(*MEM_BUFF, malloc_usable_size(*MEM_BUFF), *SRC_F) != 0) {
+    fwrite(*MEM_BUFF, BEGIN_RIGHT_SPACE[lin++], 1, *TEMP_F);
+    fputs("\n", *TEMP_F);
+
+    if((*CHAR_HIT_BOTTOM) == lin) break;
+  }
+#endif
+
+  //fclose(*SRC_F);
+  //fclose(*TEMP_F);
   //free((int*)CHAR_HIT_BOTTOM);
   //free((char*)MEM_BUFF);
   return;
 }
 
 int __CMP__(const char* input, const char* output) {
-  FILE * fPtr1;
-  FILE * fPtr2;
+  FILE * fPtr1 = fopen(input, "r");
+  FILE * fPtr2 = fopen(output, "r");
   int diff;
   int line, col;
-  fopen_s(&fPtr1, input, "r");
-  fopen_s(&fPtr2, output, "r");
 
   if (fPtr1 == NULL || fPtr2 == NULL) {
     printf("\nUnable to open file.\n");
@@ -72,7 +82,7 @@ int __CMP__(const char* input, const char* output) {
 
   //strange behaviour in file after stream(>) using cmd in windows.
   //due to that reason file which is streamed using oper(>) should be interated once more.
-  ch1 = fgetc(fPtr1);
+  //ch1 = fgetc(fPtr1);
   //ch2 = fgetc(fPtr2);
 
   if (ch1 == EOF && ch2 == EOF)
