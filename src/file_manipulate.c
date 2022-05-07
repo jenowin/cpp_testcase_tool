@@ -43,12 +43,9 @@ void WRITE_FILE(FILE** const SRC_F, FILE** const TEMP_F, const int* CHAR_HIT_BOT
   return;
 }
 
-int __CMP__(const char* input, const char* output) {
-  FILE * fPtr1 = fopen(input, "r");
+int __CMP__(const char* exp_output, const char* output) {
+  FILE * fPtr1 = fopen(exp_output, "r");
   FILE * fPtr2 = fopen(output, "r");
-  int diff;
-  int line, col;
-
   if (fPtr1 == NULL || fPtr2 == NULL) {
     printf("\nUnable to open file.\n");
     printf("Please check whether file exists and you have read privilege.\n");
@@ -56,13 +53,17 @@ int __CMP__(const char* input, const char* output) {
   }
 
   int ch1, ch2;
-
-  //line = 1;
-  //col  = 0;
+  int diff = 1;
+  int line = 1, col = 0;
 
   do {
-    ch1 = fgetc(fPtr1);
-    ch2 = fgetc(fPtr2);
+    ch1 = fgetc(fPtr1); // expected ouput file
+    ch2 = fgetc(fPtr2); // ouput file
+
+    if (ch2 == '\n') {
+      line += 1;
+      col = 0;
+    }
 
     // making the behaviour equivalent diff -Z file1 file2
     if(ch1 == '\n') {
@@ -72,19 +73,13 @@ int __CMP__(const char* input, const char* output) {
       ch2 = fgetc(fPtr2);
     }
 
-    /*
-    if (ch1 == '\n') {
-      line += 1;
-      col = 0;
-    }
-    */
 
     if (ch1 != ch2) {
       diff -1;
       break;
     }
 
-    // col += 1;
+    col += 1;
 
   } while (ch1 != EOF && ch2 != EOF);
 
@@ -95,15 +90,13 @@ int __CMP__(const char* input, const char* output) {
 
   if (ch1 == EOF && ch2 == EOF)
     diff =  0;
-  else
-    diff = -1;
-
 
   if (diff == 0) {
     COLOR_green(), _PASSED();
     _RESET();
   }
   else {
+    printf("mismatch caught at L(%d, %d)\n", line, col);
     COLOR_red(), _FAILED();
     _RESET();
   }
@@ -111,7 +104,7 @@ int __CMP__(const char* input, const char* output) {
   fclose(fPtr1);
   fclose(fPtr2);
 
-  //free((char*)input);
+  //free((char*)exit_output);
   //free((char*)output);
 
   return 0;
