@@ -5,14 +5,14 @@
 #include "memory_calc.h"
 
 char CC[2] = "14";
-void file_COMPILE(const int* ARG_cnt, const char* test, const char* fname){
-  char commands[380];
+void file_COMPILE(const char* test, const char* fname){
+  char commands[450];
 
 #ifdef _WIN32
   sprintf(commands, "g++ -std=c++%s -O2 -g -Wall -Wshadow \"-Wl,--stack=268435456\" -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion  -fno-sanitize-recover=all -fstack-protector-all -D FORTIFY_SOURCE=2  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -o %s %s.cpp", CC, fname, fname);
 #elif __linux__
-  //sprintf(commands, "g++ -std=c++%s -O2 -g -Wall -Wshadow -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all -fstack-protector-all -D FORTIFY_SOURCE=2  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -o %s %s.cpp", CC, fname, fname);
-  sprintf(commands, "g++ -std=c++%s -o %s %s.cpp", CC, fname, fname);
+  sprintf(commands, "g++ -std=c++%s -O2 -g -Wall -Wshadow -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all -fstack-protector-all -D FORTIFY_SOURCE=2  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -o %s %s.cpp", CC, fname, fname);
+  //sprintf(commands, "g++ -std=c++%s -o %s %s.cpp", CC, fname, fname);
 #endif
 
   printf("Compiling %s.cpp with c++%s.\n", fname, CC);
@@ -24,14 +24,14 @@ void file_COMPILE(const int* ARG_cnt, const char* test, const char* fname){
     DISPLAY_MEM_SRC_EXE(fname);
   } else {
     COLOR_red(), EXIT_CODE_ONE();
-    _RESET(), exit(EXIT_FAILURE);
+    _RESET();
+    exit(EXIT_FAILURE);
   }
-  return;
 }
 
 void UPDATE_OUTP(const char* exec_fname, const char* IN, const char* OP) {
   char cmd[20];
-  char new_l[20];
+  //char new_l[20];
   //sprintf(cmd, "%s<%s>%s", fname, IN, OP);
 
 #ifdef _WIN32
@@ -42,7 +42,6 @@ void UPDATE_OUTP(const char* exec_fname, const char* IN, const char* OP) {
   //sprintf(new_l, "(echo.) >> %s", OP);
   //system(new_l);
 
-  return;
 #elif __linux__
   sprintf(cmd, "./%s<%s > %s", exec_fname, IN, OP);
   system(cmd);
@@ -52,7 +51,6 @@ void UPDATE_OUTP(const char* exec_fname, const char* IN, const char* OP) {
   //sprintf(cmd, "echo $(./%s<%s) > %s", exec_fname, IN, OP);
   //system(cmd);
 
-  return;
 #endif
 
 }
@@ -71,16 +69,14 @@ void DISPLAY_EXPECTED_OUTPUT(const char* op, const char* exp_op) {
   sprintf(cmd, "cat %s", exp_op);
   system(cmd);
   printf("\n____________________________\n");
-  return;
 }
 
 void DIS_END_TIME(struct timeval *begin, struct timeval *end) {
   gettimeofday(&(*end), 0);
   long seconds = (*end).tv_sec - (*begin).tv_sec;
   long microseconds = (*end).tv_usec - (*begin).tv_usec;
-  double elapsed = seconds + microseconds*1e-6;
+  double elapsed = (double)seconds + (double)microseconds*1e-6;
   printf("Time: %.3fs\n", elapsed);
-  return;
 }
 
 int main (int argc, char* argv[]) {
@@ -94,12 +90,12 @@ int main (int argc, char* argv[]) {
     break;
 
   case 2:
-    file_COMPILE(&argc, 0, argv[1]);
+    file_COMPILE(0, argv[1]);
     DIS_END_TIME(&begin, &end);
     break;
 
   case 3:
-    file_COMPILE(&argc, argv[2], argv[1]);
+    file_COMPILE(argv[2], argv[1]);
     DIS_END_TIME(&begin, &end);
     printf("____________________________\n");
 
