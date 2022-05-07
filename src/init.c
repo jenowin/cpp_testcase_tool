@@ -121,5 +121,6 @@ int main (int argc, char* argv[]) {
     __CMP__(&op_f[0], "output");
     break;
   }
+
   return 0;
 }
