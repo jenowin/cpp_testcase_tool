@@ -64,7 +64,7 @@ int __CMP__(const char* input, const char* output) {
     ch1 = fgetc(fPtr1);
     ch2 = fgetc(fPtr2);
 
-    // making the behaviour of diff -Z file1 file2
+    // making the behaviour equivalent diff -Z file1 file2
     if(ch1 == '\n') {
       ch1 = fgetc(fPtr1);
     }
