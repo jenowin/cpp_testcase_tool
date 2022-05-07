@@ -39,14 +39,19 @@ void UPDATE_OUTP(const char* exec_fname, const char* IN, const char* OP) {
   system(cmd);
 
   //(echo.) >> output,  append new line(windows) at the end of file.
-  sprintf(new_l, "(echo.) >> %s", OP);
-  system(new_l);
+  //sprintf(new_l, "(echo.) >> %s", OP);
+  //system(new_l);
+
   return;
 #elif __linux__
+  sprintf(cmd, "./%s<%s > %s", exec_fname, IN, OP);
+  system(cmd);
+
   //./%s<%s>%s No new line created.
   // echo $(./%s<%s) > output, creates new line(linux).
-  sprintf(cmd, "echo $(./%s<%s) > %s", exec_fname, IN, OP);
-  system(cmd);
+  //sprintf(cmd, "echo $(./%s<%s) > %s", exec_fname, IN, OP);
+  //system(cmd);
+
   return;
 #endif
 
@@ -106,8 +111,8 @@ int main (int argc, char* argv[]) {
 
     UPDATE_OUTP(argv[1], &in_f[0], "output");
     printf("file size: %d\n", (int)GET_SIZE("output"));
-    exit(0);
-    (int)(GET_SIZE("output")) ? fprintf(stderr, "output file is empty!\n"), exit(EXIT_FAILURE): 0;
+    //exit(0);
+    //(int)(GET_SIZE("output")) ? fprintf(stderr, "output file is empty!\n"), exit(EXIT_FAILURE): 0;
     __TRIM__(&in_f[0]);
     __TRIM__(&op_f[0]);
 
