@@ -73,15 +73,15 @@ CMakeFiles/com.dir/src/init.c.o: CMakeFiles/com.dir/flags.make
 CMakeFiles/com.dir/src/init.c.o: ../src/init.c
 CMakeFiles/com.dir/src/init.c.o: CMakeFiles/com.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/com.dir/src/init.c.o"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/com.dir/src/init.c.o -MF CMakeFiles/com.dir/src/init.c.o.d -o CMakeFiles/com.dir/src/init.c.o -c /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/com.dir/src/init.c.o -MF CMakeFiles/com.dir/src/init.c.o.d -o CMakeFiles/com.dir/src/init.c.o -c /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c
 
 CMakeFiles/com.dir/src/init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/com.dir/src/init.c.i"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c > CMakeFiles/com.dir/src/init.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c > CMakeFiles/com.dir/src/init.c.i
 
 CMakeFiles/com.dir/src/init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/com.dir/src/init.c.s"
-	/usr/sbin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c -o CMakeFiles/com.dir/src/init.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jenowin/Desktop/cpp_testcase_tool/src/init.c -o CMakeFiles/com.dir/src/init.c.s
 
 # Object files for target com
 com_OBJECTS = \

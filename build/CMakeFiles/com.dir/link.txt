@@ -1,1 +1,1 @@
-/usr/sbin/cc CMakeFiles/com.dir/src/init.c.o -o com 
+/usr/bin/cc CMakeFiles/com.dir/src/init.c.o -o com 
