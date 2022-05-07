@@ -11,7 +11,7 @@ void file_COMPILE(const int* ARG_cnt, const char* test, const char* fname){
 #ifdef _WIN32
   sprintf(commands, "g++ -std=c++%s -O2 -g -Wall -Wshadow \"-Wl,--stack=268435456\" -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion  -fno-sanitize-recover=all -fstack-protector-all -D FORTIFY_SOURCE=2  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -o %s %s.cpp", CC, fname, fname);
 #elif __linux__
-  sprintf(commands, "g++ -std=c++%s -o %s %s.cpp", CC, fname, fname);
+  sprintf(commands, "g++ -std=c++%s -O2 -g -Wall -Wshadow -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion -fsanitize=address -fsanitize-undefined -fsanitize-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all -fstack-protector-all -D FORTIFY_SOURCE=2  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -o %s %s.cpp", CC, fname, fname);
 #endif
 
   printf("Compiling %s.cpp with c++%s.\n", fname, CC);
