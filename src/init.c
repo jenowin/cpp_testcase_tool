@@ -110,7 +110,7 @@ int main (int argc, char* argv[]) {
     !fopen(op_f, "r") ? fprintf(stderr, "Expected output file %s missing! \n", op_f), exit(EXIT_FAILURE) : 0;
 
     UPDATE_OUTP(argv[1], &in_f[0], "output");
-    printf("file size: %d\n", (int)GET_SIZE("output"));
+    //printf("file size: %d\n", (int)GET_SIZE("output"));
     //exit(0);
     //(int)(GET_SIZE("output")) ? fprintf(stderr, "output file is empty!\n"), exit(EXIT_FAILURE): 0;
     __TRIM__(&in_f[0]);
