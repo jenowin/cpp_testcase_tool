@@ -43,9 +43,9 @@ void WRITE_FILE(FILE** const SRC_F, FILE** const TEMP_F, const int* CHAR_HIT_BOT
   return;
 }
 
-int __CMP__(const char* exp_output, const char* output) {
-  FILE * fPtr1 = fopen(exp_output, "r");
-  FILE * fPtr2 = fopen(output, "r");
+int __CMP__(const char* output, const char* exp_output) {
+  FILE * fPtr1 = fopen(output, "r");
+  FILE * fPtr2 = fopen(exp_output, "r");
   if (fPtr1 == NULL || fPtr2 == NULL) {
     printf("\nUnable to open file.\n");
     printf("Please check whether file exists and you have read privilege.\n");
@@ -54,20 +54,23 @@ int __CMP__(const char* exp_output, const char* output) {
 
   int ch1, ch2;
   int diff = 1;
-  int line = 1, col = 0;
+  int f1_line = 1, f1_col = 0;
+  int f2_line = 1, f2_col = 0;
 
   do {
-    ch1 = fgetc(fPtr1); // expected ouput file
-    ch2 = fgetc(fPtr2); // ouput file
+    ch1 = fgetc(fPtr1); // output file
+    ch2 = fgetc(fPtr2); // expected ouput file
 
     // making the behaviour equivalent diff -Z file1 file2
     if(ch1 == '\n') {
       ch1 = fgetc(fPtr1);
+      f1_line += 1;
+      f1_col = 0;
     }
     if(ch2 == '\n') {
       ch2 = fgetc(fPtr2);
-      line += 1;
-      col = 0;
+      f2_line += 1;
+      f2_col = 0;
     }
 
 
@@ -76,7 +79,8 @@ int __CMP__(const char* exp_output, const char* output) {
       break;
     }
 
-    col += 1;
+    f1_col += 1;
+    f2_col += 1;
 
   } while (ch1 != EOF && ch2 != EOF);
 
@@ -93,7 +97,7 @@ int __CMP__(const char* exp_output, const char* output) {
     _RESET();
   }
   else {
-    printf("mismatch caught at L(%d, %d)\n", line, col);
+    printf("mismatch caught at L(%d, %d) and L(%d, %d)\n", f1_line, f1_col, f2_line, f2_col);
     COLOR_red(), _FAILED();
     _RESET();
   }
