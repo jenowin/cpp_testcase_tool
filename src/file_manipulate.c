@@ -60,17 +60,14 @@ int __CMP__(const char* exp_output, const char* output) {
     ch1 = fgetc(fPtr1); // expected ouput file
     ch2 = fgetc(fPtr2); // ouput file
 
-    if (ch2 == '\n') {
-      line += 1;
-      col = 0;
-    }
-
     // making the behaviour equivalent diff -Z file1 file2
     if(ch1 == '\n') {
       ch1 = fgetc(fPtr1);
     }
     if(ch2 == '\n') {
       ch2 = fgetc(fPtr2);
+      line += 1;
+      col = 0;
     }
 
 
