@@ -36,14 +36,15 @@ void WRITE_FILE(FILE** const SRC_F, FILE** const TEMP_F, const int* CHAR_HIT_BOT
   }
 #endif
 
-  //fclose(*SRC_F);
-  //fclose(*TEMP_F);
   //free((int*)CHAR_HIT_BOTTOM);
   //free((char*)MEM_BUFF);
   return;
 }
 
 int __CMP__(const char* output, const char* exp_output) {
+
+  // make sure the file formats matches with the working native systems(dos-windows, unix-linux)
+
   FILE * fPtr1 = fopen(output, "r");
   FILE * fPtr2 = fopen(exp_output, "r");
   if (fPtr1 == NULL || fPtr2 == NULL) {
@@ -55,24 +56,19 @@ int __CMP__(const char* output, const char* exp_output) {
   int ch1, ch2;
   int diff = 1;
   int f1_line = 1, f1_col = 0;
-  int f2_line = 1, f2_col = 0;
 
   do {
     ch1 = fgetc(fPtr1); // output file
     ch2 = fgetc(fPtr2); // expected ouput file
 
-    // making the behaviour equivalent diff -Z file1 file2
+    // making the behaviour equivalent to diff -Z file1 file2
     if(ch1 == '\n') {
       ch1 = fgetc(fPtr1);
       f1_line += 1;
-      f1_col = 0;
     }
     if(ch2 == '\n') {
       ch2 = fgetc(fPtr2);
-      f2_line += 1;
-      f2_col = 0;
     }
-
 
     if (ch1 != ch2) {
       diff -1;
@@ -80,14 +76,8 @@ int __CMP__(const char* output, const char* exp_output) {
     }
 
     f1_col += 1;
-    f2_col += 1;
 
   } while (ch1 != EOF && ch2 != EOF);
-
-  //strange behaviour in file after stream(>) using cmd in windows.
-  //due to that reason file which is streamed using oper(>) should be interated once more.
-  //ch1 = fgetc(fPtr1);
-  //ch2 = fgetc(fPtr2);
 
   if (ch1 == EOF && ch2 == EOF)
     diff =  0;
@@ -97,7 +87,7 @@ int __CMP__(const char* output, const char* exp_output) {
     _RESET();
   }
   else {
-    printf("mismatch caught at L(%d, %d) and L(%d, %d)\n", f1_line, f1_col, f2_line, f2_col);
+    printf("mismatch caught at L(%d, %d)\n", f1_line, f1_col);
     COLOR_red(), _FAILED();
     _RESET();
   }
