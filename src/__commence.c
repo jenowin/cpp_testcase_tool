@@ -4,7 +4,6 @@
 
 void CHECK_POSSIBLITY(long** const LINE_POS, char** const MEM_BUFF) {
   LINE_POS == NULL || MEM_BUFF == NULL ? fprintf(stderr, "Can't allocate memory\n"), exit(EXIT_FAILURE) : 0;
-  return;
 }
 
 void __TRIM__(const char* inputfile) {
@@ -17,10 +16,10 @@ void __TRIM__(const char* inputfile) {
   !temp_FILE ? fprintf(stderr, "Can't create tempfile %s\n", tempfile), exit(EXIT_FAILURE): 0;
 
 
-  int CH = 0, TOT_LINES = 0, LEN = 0, LINE_LEN = 0;
+  int TOT_LINES = 0, LEN = 0, LINE_LEN = 0;
   int FIRST_SPACE_HIT_POS = 0, hit_flag = 0;
-  char prev_CH; int i = 0;
-  while((CH = fgetc(src_FILE)) != EOF) {
+  char CH, prev_CH; int i = 0;
+  while((CH = (char)fgetc(src_FILE)) != EOF) {
     LEN++;
     if(CH == ' '){
       if(!hit_flag) {
@@ -54,12 +53,12 @@ void __TRIM__(const char* inputfile) {
   int it = 0; LINE_POS[it]  = 0;
 
   rewind(src_FILE);
-  while((CH = fgetc(src_FILE)) != EOF)
+  while((CH = (char)fgetc(src_FILE)) != EOF)
     if(CH == '\n'){ LINE_POS[++it] = ftell(src_FILE); }
 
   int CHAR_HIT_BOTTOM = 0;
   rewind(src_FILE);
-  for(int i = TOT_LINES - 1; i >= 0; --i) {
+  for(i = TOT_LINES - 1; i >= 0; --i) {
 
     fseek(src_FILE, LINE_POS[i], SEEK_SET);
     fgets(MEM_BUFF, LINE_LEN + 1, src_FILE);
@@ -81,6 +80,4 @@ void __TRIM__(const char* inputfile) {
   fclose(temp_FILE);
   free(MEM_BUFF);
   free(LINE_POS);
-
-  return;
 }
