@@ -114,7 +114,7 @@ int main (int argc, char* argv[]) {
 
 
     DISPLAY_EXPECTED_OUTPUT("output", &op_f[0]);
-    __CMP__(&op_f[0], "output");
+    __CMP__("output", &op_f[0]);
     break;
   }
 
