@@ -1,0 +1,3 @@
+upcomming feature:
+    separate config file (writing a parser)
+    piping the commands through the main program.
